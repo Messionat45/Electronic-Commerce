@@ -1,0 +1,11 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon start"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
