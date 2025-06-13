@@ -9,10 +9,39 @@ const productSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  brand: {
+    type: String,
+    default: "",
+  },
+  price: {
+    type: Number,
+    default: 0,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "category",
+    required: true,
+  },
   pcount: {
     type: Number,
     required: true,
     default: 0,
+    min: 0,
+    max: 255,
+  },
+
+  prating: {
+    type: Number,
+    default: 0,
+  },
+
+  pfeatured: {
+    type: Boolean,
+    default: false,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
