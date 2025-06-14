@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  brand: {
+  pbrand: {
     type: String,
     default: "",
   },
@@ -33,13 +33,15 @@ const productSchema = new mongoose.Schema({
   prating: {
     type: Number,
     default: 0,
+    min: 0,
+    max: 5,
   },
 
   pfeatured: {
     type: Boolean,
     default: false,
   },
-  date: {
+  pdate: {
     type: Date,
     default: Date.now,
   },
