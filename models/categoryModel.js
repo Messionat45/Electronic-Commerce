@@ -11,6 +11,7 @@ const categorySchema = new mongoose.Schema({
   cicon: {
     type: String,
     required: false,
+    default: "white",
   },
   cimage: {
     type: String,
