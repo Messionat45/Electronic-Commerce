@@ -1,4 +1,5 @@
 const category = require("../models/categoryModel");
+const mongoose = require("mongoose");
 
 const insert_category = async (req, res) => {
   try {
@@ -32,6 +33,9 @@ const display_category = async (req, res) => {
 const delete_category = async (req, res) => {
   try {
     const del = req.params.id;
+    if (mongoose.isValidObjectId(del)) {
+      return res.status(400).send("no id present");
+    }
 
     const dbData = await category.findByIdAndDelete(del);
     console.log(dbData);
@@ -58,6 +62,9 @@ const get_category_by_id = async (req, res) => {
 
 const update_category = async (req, res) => {
   try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).send("object id id worng");
+    }
     const dbData = await category.findByIdAndUpdate(
       req.params.id,
       {
