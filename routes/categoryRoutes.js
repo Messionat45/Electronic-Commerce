@@ -8,10 +8,14 @@ const {
   update_category,
 } = require("../controller/categoryController");
 
-router.post("/", insert_category);
-router.delete("/:id", delete_category);
-router.get("/", display_category);
-router.get("/:id", get_category_by_id);
-router.put("/:id", update_category);
+
+const auth = require("../middleware/jwtAuth");
+const isAdmin = require("../middleware/isAdmin");
+
+router.post("/", auth, isAdmin, insert_category);
+router.delete("/:id", isAdmin, auth, delete_category);
+router.get("/", auth, display_category);
+router.get("/:id", auth, get_category_by_id);
+router.put("/:id", auth, isAdmin, update_category);
 
 module.exports = router;
