@@ -1,4 +1,4 @@
-const user = require("../models/userModel");
+const user = require("../../models/userModel");
 const bcrypt = require("bcrypt");
 
 const signup = async (req, res) => {
@@ -25,7 +25,7 @@ const signup = async (req, res) => {
 
     return res.status(200).json({ message: " data inserted successfully" });
   } catch (error) {
-    console.log(error.message);
+    console.log(error.errmsg);
     return res.status(500).send("serve issue");
   }
 };

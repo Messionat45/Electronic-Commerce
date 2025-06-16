@@ -17,16 +17,16 @@ const {
 const auth = require("../middleware/jwtAuth");
 const isAdmin = require("../middleware/isAdmin");
 
-router.post("/product", auth, isAdmin, insert_product);
-router.get("/product", auth, display_product);
-router.get("/product/nameimage", auth, display_name_image);
-router.get("/product/fullCategory", auth, show_full_categoy); // to show referenced table whole details
-router.put("/product/:id", auth, update_product);
-router.get("/product/count", auth, product_count);
-router.get("/product/featured", auth, featured_product);
-router.get("/product/category/:id", auth, product_by_category);
-router.get("/product/multicategory", auth, multi_category_product);
-router.get("/product/:id", auth, get_product_by_id);
-router.delete("/product/:id", auth, isAdmin, delete_product);
+router.post("/", auth, isAdmin, insert_product);
+router.get("/", auth, display_product);
+router.get("/nameimage", auth, display_name_image);
+router.get("/fullCategory", auth, show_full_categoy); // to show referenced table whole details
+router.put("/id", auth, update_product);
+router.get("/count", auth, product_count);
+router.get("/featured", auth, featured_product);
+router.get("/category/:id", auth, product_by_category);
+router.get("/multicategory", auth, multi_category_product);
+router.get("/id", auth, get_product_by_id);
+router.delete("/:id", auth, isAdmin, delete_product);
 
 module.exports = router;

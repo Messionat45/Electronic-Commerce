@@ -1,4 +1,4 @@
-const user = require("../models/userModel");
+const user = require("../../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -6,6 +6,7 @@ const jwtKey = process.env.JWT_KEY;
 console.log("jwt key:", jwtKey);
 
 const login = async (req, res) => {
+  // console.log(req);
   try {
     console.log("i am in login");
     const uEmail = req.body.email.toLowerCase();
@@ -50,4 +51,5 @@ const login = async (req, res) => {
     return res.status(500).send("server issue");
   }
 };
+
 module.exports = { login };

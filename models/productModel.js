@@ -34,7 +34,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
     min: 0,
-    max: 5,
+    max: 10
   },
 
   pfeatured: {
