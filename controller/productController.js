@@ -179,6 +179,8 @@ const multi_category_product = async (req, res) => {
     return res.status(500).send("server issue");
   }
 };
+
+
 module.exports = {
   insert_product,
   display_product,

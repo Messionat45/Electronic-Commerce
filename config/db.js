@@ -6,7 +6,7 @@ const connectDB = async () => {
     await mongoose.connect(dbURL);
     console.log("conn to database ecommerce");
   } catch (error) {
-    console.log("some error", error.meassage);
+    console.log("some error", error);
   }
 };
 

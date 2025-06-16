@@ -14,16 +14,16 @@ const {
 } = require("../controller/productController");
 const router = express.Router();
 
-router.post("/product", insert_product);
-router.get("/product", display_product);
-router.get("/product/nameimage", display_name_image);
-router.get("/product/fullCategory", show_full_categoy); // to show referenced table whole details
-router.put("/product/:id", update_product);
-router.get("/product/count", product_count);
-router.get("/product/featured", featured_product);
-router.get("/product/category/:id", product_by_category);
-router.get("/product/multicategory", multi_category_product);
-router.get("/product/:id", get_product_by_id);
-router.delete("/product/:id", delete_product);
+router.post("/", insert_product);
+router.get("/", display_product);
+router.get("/nameimage", display_name_image);
+router.get("/fullCategory", show_full_categoy); // to show referenced table whole details
+router.put("/:id", update_product);
+router.get("/count", product_count);
+router.get("/featured", featured_product);
+router.get("/category/:id", product_by_category);
+router.get("/multicategory", multi_category_product);
+router.get("/:id", get_product_by_id);
+router.delete("/:id", delete_product);
 
 module.exports = router;

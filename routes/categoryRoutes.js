@@ -8,10 +8,10 @@ const {
   update_category,
 } = require("../controller/categoryController");
 
-router.post("/category", insert_category);
-router.delete("/category/:id", delete_category);
-router.get("/category", display_category);
-router.get("/category/:id", get_category_by_id);
-router.put("/category/:id", update_category);
+router.post("/", insert_category);
+router.delete("/:id", delete_category);
+router.get("/", display_category);
+router.get("/:id", get_category_by_id);
+router.put("/:id", update_category);
 
 module.exports = router;
