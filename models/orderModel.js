@@ -1,19 +1,50 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-  oname: {
+  oitems: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "orderItem",
+      required: true,
+    },
+  ],
+  shippingAddress: {
+    type: String,
+    require: true,
+  },
+  ocity: {
+    type: String,
+    require: true,
+  },
+  ozip: {
+    type: Number,
+    required: true,
+  },
+  ocountry: {
     type: String,
     required: true,
   },
-  ocolor: {
-    type: String,
-    required: false,
+  ophone: {
+    type: Number,
+    required: true,
   },
-  oicon: {
+  status: {
     type: String,
+    required: true,
+    default: "pending",
   },
-  oimage: {
-    type: String,
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
+  dateOrdered: {
+    type: Date,
+    default: Date.now,
   },
 });
 
