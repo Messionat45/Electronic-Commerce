@@ -32,12 +32,12 @@ const login = async (req, res) => {
         isAdmin: checkUser.isAdmin,
       },
       jwtKey,
-      { expiresIn: 60 * 10 * 1000 }
+      { expiresIn: 30 * 60 * 1000 }
     );
 
     console.log(jwtToken);
     res.cookie("token", jwtToken, {
-      maxAge: 60 * 10 * 1000,
+      maxAge: 30 * 60 * 1000,
       httpOnly: true,
       secure: true,
     });
