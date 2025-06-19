@@ -18,6 +18,21 @@ const make_order = async (req, res) => {
 
     console.log(orderItemIds);
 
+    const totalPrices = await Promise.all(
+      orderItemIds.map(async (item) => {
+        const productFind = await orderItem
+          .findById(item)
+          .populate("product", "price");
+        const totalProductPrice =
+          productFind.product.price * productFind.quantity;
+        return totalProductPrice;
+      })
+    );
+
+    console.log(totalPrices);
+
+    const totalPrice = totalPrices.reduce((acc, price) => acc + price, 0);
+
     const orderData = {
       oitems: orderItemIds,
       shippingAddress: req.body.shippingAddress,
@@ -25,7 +40,7 @@ const make_order = async (req, res) => {
       ozip: req.body.ozip,
       ocountry: req.body.ocountry,
       ophone: req.body.ophone,
-      totalPrice: req.body.totalPrice,
+      totalPrice: totalPrice,
       user: req.loggedUser.id,
     };
 
