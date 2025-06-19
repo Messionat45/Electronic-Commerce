@@ -32,6 +32,7 @@ const make_order = async (req, res) => {
 
     console.log(totalPrices);
 
+    // here the totalPries array sum is done by using reduce methode
     const totalPrice = totalPrices.reduce((acc, price) => acc + price, 0);
 
     const orderData = {
@@ -139,10 +140,35 @@ const delete_by_order_id = async (req, res) => {
   }
 };
 
+// getting all orders history  of a user
+const user_order_history = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.userid))
+      return res.status(400).send(" wrong id format");
+
+    const dbData = await order
+      .find({ user: req.params.userid })
+      .populate({
+        path: "oitems",
+        populate: { path: "product", populate: "category" },
+      })
+      .sort({ dateOrdered: -1 });
+
+    console.log(dbData);
+    if (!dbData) return res.status(400).send("no orders with given user id");
+
+    return res.status(200).send(dbData);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send("server issuue");
+  }
+};
+
 module.exports = {
   make_order,
   display_order,
   display_by_order_id,
   update_status_by_order_id,
   delete_by_order_id,
+  user_order_history,
 };

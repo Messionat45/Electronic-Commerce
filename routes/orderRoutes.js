@@ -6,6 +6,7 @@ const {
   display_by_order_id,
   update_status_by_order_id,
   delete_by_order_id,
+  user_order_history,
 } = require("../controller/orderController");
 const isAdmin = require("../middleware/isAdmin");
 const auth = require("../middleware/jwtAuth");
@@ -17,5 +18,6 @@ router.put("/order/:id", auth, isAdmin, update_status_by_order_id);
 router.get("/order/:id", auth, display_by_order_id);
 
 router.delete("/order/:id", auth, delete_by_order_id);
+router.get("/allorder/:userid", auth, user_order_history);
 
 module.exports = router;
