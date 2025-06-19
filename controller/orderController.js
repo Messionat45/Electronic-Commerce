@@ -18,6 +18,7 @@ const make_order = async (req, res) => {
 
     console.log(orderItemIds);
 
+    // total price calculation logic
     const totalPrices = await Promise.all(
       orderItemIds.map(async (item) => {
         const productFind = await orderItem
